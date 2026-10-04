@@ -1,0 +1,24 @@
+{
+ "version": 1,
+ "startCapital": 3000,
+ "cash": 3000,
+ "peak": 3000,
+ "gPeak": 3000,
+ "maxDD": 0,
+ "halted": false,
+ "haltUntilT": 0,
+ "halts": 0,
+ "startT": 1790985600,
+ "startBtc": 84753.56,
+ "lastT": 1790985600,
+ "pos": {},
+ "pend": {},
+ "trades": [],
+ "days": [
+  {
+   "t": 1790985600,
+   "eq": 3000,
+   "ev": []
+  }
+ ]
+}
