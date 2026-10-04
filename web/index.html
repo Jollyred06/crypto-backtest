@@ -117,6 +117,7 @@ function render(d) {
   });
   h += '</div>';
 
+  h += d.coinsHtml || '';
   h += '<h2>Ultimi 15 giorni</h2><div class="card"><table><tr><th>Giorno</th><th class="r">Capitale</th><th>Eventi</th></tr>';
   (S.days || []).slice(-15).reverse().forEach(x => {
     h += '<tr><td>' + dstr(x.t) + '</td><td class="r">' + fmt(x.eq, 2) + '</td><td>' + esc((x.ev || []).join('; ') || '-') + '</td></tr>';
