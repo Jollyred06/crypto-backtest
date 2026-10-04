@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prova virtuale</title>
+<style>
+:root{--bg:#0b0f14;--card:#121923;--line:#1f2a38;--text:#e6edf3;--muted:#8b98a7;--up:#34d399;--down:#f87171}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+h1{font-size:18px;margin:0}
+.sub{color:var(--muted);font-size:13px;margin:2px 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.big{font-size:34px;font-weight:700;letter-spacing:-.5px}
+.up{color:var(--up)}.down{color:var(--down)}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.k{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.k b{display:block;font-size:17px}.k span{color:var(--muted);font-size:12px}
+h2{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px}
+.chart{width:100%;height:auto;display:block}
+.chart polyline{fill:none;stroke-width:2}
+.chart polyline.up{stroke:var(--up)}.chart polyline.down{stroke:var(--down)}
+.chart .base{stroke:var(--muted);stroke-dasharray:3 4;stroke-width:1}
+.axis{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500}
+td.r,th.r{text-align:right}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.buy{background:#0f3d2e;color:var(--up)}.pill.sell{background:#4a1d1d;color:var(--down)}
+.row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}.row small{display:block;color:var(--muted)}
+.err{background:#3b1d1d;border:1px solid #6b2b2b;padding:12px;border-radius:10px}
+.note{color:var(--muted);font-size:12px;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Prova virtuale</h1>
+  <div class="sub" id="sub">Caricamento...</div>
+  <div id="app"></div>
+</div>
+<script>
+const fmt = (n, d) => Number(n).toLocaleString('it-IT', { minimumFractionDigits: d === undefined ? 2 : d, maximumFractionDigits: d === undefined ? 2 : d });
+const px = n => (Math.abs(n) >= 1 ? fmt(n, 2) : fmt(n, 4));
+const qty = n => String(Number(Number(n).toPrecision(4)));
+const sg = n => (n >= 0 ? '+' : '') + fmt(n, 1) + '%';
+const cls = n => (n >= 0 ? 'up' : 'down');
+const dstr = t => new Date(t * 1000).toISOString().slice(0, 10);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const ATR_MULT = 3;
+
+function chart(days, base) {
+  if (!days || days.length < 2) return '<p class="muted">Il grafico compare dal secondo giorno.</p>';
+  const W = 340, H = 140, P = 6;
+  const vals = days.map(d => d.eq).concat([base]);
+  let lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+  if (hi - lo < 1) { hi += 1; lo -= 1; }
+  const x = i => P + (W - 2 * P) * i / (days.length - 1);
+  const y = v => H - P - (H - 2 * P) * (v - lo) / (hi - lo);
+  const pts = days.map((d, i) => x(i).toFixed(1) + ',' + y(d.eq).toFixed(1)).join(' ');
+  const up = days[days.length - 1].eq >= base;
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" class="chart"><line x1="' + P + '" x2="' + (W - P) + '" y1="' + y(base).toFixed(1) + '" y2="' + y(base).toFixed(1) + '" class="base"/><polyline points="' + pts + '" class="' + (up ? 'up' : 'down') + '"/></svg>' +
+    '<div class="axis"><span>' + dstr(days[0].t) + '</span><span>' + dstr(days[days.length - 1].t) + '</span></div>';
+}
+
+function render(d) {
+  const S = d.state, P = d.prices || {};
+  const pos = Object.keys(S.pos || {});
+  const pend = S.pend || {};
+  const eq = S.cash + pos.reduce((a, s) => a + S.pos[s].qty * S.pos[s].last, 0);
+  const ret = (eq / S.startCapital - 1) * 100;
+  const tr = S.trades || [];
+  const w = tr.filter(x => x.pnl > 0), l = tr.filter(x => x.pnl <= 0);
+  const gw = w.reduce((a, x) => a + x.pnl, 0), gl = -l.reduce((a, x) => a + x.pnl, 0);
+  const pf = tr.length ? (gl > 0 ? fmt(gw / gl, 2) : (gw > 0 ? 'infinito' : '-')) : '-';
+  const wr = tr.length ? Math.round(100 * w.length / tr.length) + '%' : '-';
+  const bh = (P.BTC && S.startBtc) ? (P.BTC / S.startBtc - 1) * 100 : null;
+  let h = '';
+
+  h += '<div class="card"><div class="muted" style="font-size:13px">Capitale virtuale</div>' +
+    '<div class="big">' + fmt(eq, 2) + '</div>' +
+    '<div class="' + cls(ret) + '">' + sg(ret) + ' dalla partenza (' + dstr(S.startT) + ', ' + fmt(S.startCapital, 0) + ')</div>' +
+    '<div style="margin-top:10px">' + chart(S.days, S.startCapital) + '</div></div>';
+
+  h += '<div class="grid">' +
+    '<div class="k"><span>BTC tenuto fermo</span><b class="' + (bh === null ? '' : cls(bh)) + '">' + (bh === null ? 'n.d.' : sg(bh)) + '</b></div>' +
+    '<div class="k"><span>Drawdown massimo</span><b>' + fmt(S.maxDD * 100, 1) + '%</b></div>' +
+    '<div class="k"><span>Trade chiusi</span><b>' + tr.length + '</b></div>' +
+    '<div class="k"><span>Win rate</span><b>' + wr + '</b></div>' +
+    '<div class="k"><span>Profit factor</span><b>' + pf + '</b></div>' +
+    '<div class="k"><span>Stop globale -15%</span><b>' + (S.halted ? 'ATTIVO' : 'non attivo') + '</b></div></div>';
+
+  h += '<h2>Segnali per oggi</h2><div class="card">';
+  const sigs = Object.keys(pend);
+  if (!sigs.length) h += '<span class="muted">Nessun segnale.</span>';
+  sigs.forEach(s => {
+    const p = pend[s];
+    if (p.type === 'BUY') {
+      const price = P[s];
+      h += '<div class="row"><div><span class="pill buy">COMPRA</span> <b>' + esc(s) + '</b>' +
+        '<small>' + (price ? 'prezzo ora circa ' + px(price) + ', stop indicativo ' + px(price - ATR_MULT * p.atr) : 'prezzo non disponibile') + '</small></div></div>';
+    } else {
+      h += '<div class="row"><div><span class="pill sell">VENDI</span> <b>' + esc(s) + '</b>' + (P[s] ? '<small>prezzo ora circa ' + px(P[s]) + '</small>' : '') + '</div></div>';
+    }
+  });
+  h += '</div>';
+
+  h += '<h2>Posizioni aperte</h2><div class="card">';
+  if (!pos.length) h += '<span class="muted">Nessuna.</span>';
+  pos.forEach(s => {
+    const p = S.pos[s], now = P[s] || p.last, pl = (now / p.entry - 1) * 100;
+    h += '<div class="row"><div><b>' + esc(s) + '</b><small>qta ' + qty(p.qty) + ' · entrata ' + px(p.entry) + '</small><small>stop ' + px(p.stop) + '</small></div>' +
+      '<div style="text-align:right"><b class="' + cls(pl) + '">' + sg(pl) + '</b><small>' + px(now) + '</small></div></div>';
+  });
+  h += '</div>';
+
+  h += '<h2>Ultimi 15 giorni</h2><div class="card"><table><tr><th>Giorno</th><th class="r">Capitale</th><th>Eventi</th></tr>';
+  (S.days || []).slice(-15).reverse().forEach(x => {
+    h += '<tr><td>' + dstr(x.t) + '</td><td class="r">' + fmt(x.eq, 2) + '</td><td>' + esc((x.ev || []).join('; ') || '-') + '</td></tr>';
+  });
+  h += '</table></div>';
+
+  h += '<h2>Ultimi 20 trade chiusi</h2><div class="card">';
+  if (!tr.length) h += '<span class="muted">Nessuno.</span>';
+  else {
+    h += '<table><tr><th>Chiuso</th><th>Moneta</th><th class="r">Entrata</th><th class="r">Uscita</th><th class="r">P&amp;L</th></tr>';
+    tr.slice(-20).reverse().forEach(x => {
+      h += '<tr><td>' + dstr(x.t) + '</td><td>' + esc(x.s) + '</td><td class="r">' + px(x.entry) + '</td><td class="r">' + px(x.exit) + '</td><td class="r ' + cls(x.pnl) + '">' + (x.pnl >= 0 ? '+' : '') + fmt(x.pnl, 2) + '</td></tr>';
+    });
+    h += '</table>';
+  }
+  h += '</div>';
+  h += '<p class="note">Simulazione con prezzi reali: nessun ordine reale. Non è un consiglio di investimento. I segnali si aggiornano ogni giorno poco dopo la mezzanotte UTC.</p>';
+
+  document.getElementById('app').innerHTML = h;
+  const hh = new Date().toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('sub').textContent = 'Ultima candela chiusa: ' + dstr(S.lastT) + ' · pagina aggiornata alle ' + hh;
+}
+
+async function load() {
+  try {
+    const r = await fetch('/api/data', { credentials: 'same-origin' });
+    const d = await r.json();
+    if (d.error) throw new Error(d.error);
+    render(d);
+  } catch (e) {
+    document.getElementById('app').innerHTML = '<div class="err">Non riesco a caricare i dati: ' + esc(e.message) + '</div>';
+    document.getElementById('sub').textContent = 'Errore';
+  }
+}
+load();
+setInterval(load, 300000);
+</script>
+</body>
+</html>

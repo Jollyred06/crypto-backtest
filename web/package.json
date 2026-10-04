@@ -1,0 +1,12 @@
+{
+  "name": "prova-virtuale-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pagina privata per la prova virtuale (sola lettura)",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
