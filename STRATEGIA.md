@@ -37,7 +37,6 @@ Test sulle 6 monete nuove, ognuna da sola con 3000 (trade, PF, rendimento, drawd
 BNB 25, 13,37, +76%, 12%; tieni +49988% (dd 80%) | XRP 24, 2,23, +11%, 8%; tieni +67% (dd 85%) | ADA 20, 5,32, +38%, 6%; tieni 0% (dd 95%) | DOGE 19, 2,70, +10%, 9%; tieni +2298% (dd 92%) | LTC 24, 1,19, +2%, 9%; tieni -76% (dd 93%) | LINK 20, 2,35, +8%, 8%; tieni +2784% (dd 90%).
 Portafoglio delle 6 per anno (P&L, trade): 2018 -15 (1) | 2019 +256 (5) | 2020 +309 (10) | 2021 +2058 (9) | 2022 -33 (4) | 2023 -14 (11) | 2024 +1295 (13) | 2025 -185 (10) | 2026 +396 (4).
 Limiti: circa l'82% del guadagno viene da 2021 e 2024; BNB da solo pesa circa la meta dei risultati singoli; le monete non sono prove indipendenti (si muovono insieme); il test include solo monete ancora quotate (ottimismo da sopravvivenza). Rendimento del portafoglio circa 10% annuo composto sul passato.
-Il portafoglio da 9 monete insieme (con il limite di 2 posizioni) NON e' mai stato provato come sistema unico.
 
 ## Criteri di valutazione (fissati prima dei test)
 - Test su BTC/ETH/SOL: almeno 30 trade, profit factor >= 1,3, drawdown massimo <= 20%, rendimento > 0, e rendimento/drawdown migliore del compra-e-tieni su BTC.
@@ -74,13 +73,3 @@ Ritmo: circa 10,5 trade chiusi all'anno (2020-2025): 15 trade in circa 1,4 anni,
 Confronto: 3 monete +98,7% (54 trade, circa 7,8% annuo), 6 monete nuove +135,6% (67 trade, circa 10% annuo), 9 insieme circa +70% (76 trade, circa 6% annuo). Aggiungere monete non ha migliorato il rendimento: il limite di 2 posizioni scarta molti segnali. Il 10% annuo citato prima valeva per le 6 monete da sole, non per la configurazione in uso.
 Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe scegliere a posteriori. Il riferimento per giudicare la prova virtuale e' questo risultato: circa 6% annuo, con anni negativi normali (2018, 2022, 2025).
 
-## Test portafoglio da 9 monete insieme (riferimento della prova virtuale) - 2026-10-04
-Stessa strategia v3, 9 monete nello stesso portafoglio con limite di 2 posizioni, 2017-2026. Criteri (come prima, senza confronto con BTC): superati.
-Risultato: capitale circa 5109 su 3000 (+70%, circa 6% annuo composto), 76 trade, drawdown massimo 11,5%, stop globale mai scattato.
-Capitale e totale trade ricavati sommando le righe leggibili (la parte alta dello screenshot non si vedeva).
-Segnali di acquisto non eseguiti per il limite di 2 posizioni: 441 episodi (900 giorni-segnale).
-Per moneta (trade, P&L): BTC 15 +671 | ETH 13 +515 | SOL 7 +313 | BNB 12 -90 | XRP 5 -212 | ADA 4 +183 | DOGE 5 +388 | LTC 8 -82 | LINK 7 +423.
-Per anno (P&L, trade): 2018 -41 (2) | 2019 +366 (7) | 2020 +246 (8) | 2021 +705 (13) | 2022 -114 (5) | 2023 +96 (11) | 2024 +1100 (13) | 2025 -341 (13) | 2026 +91 (4).
-Ritmo: circa 10,5 trade chiusi all'anno (2020-2025): 15 trade in circa 1,4 anni, 20 trade in circa 1,9 anni.
-Confronto: 3 monete +98,7% (54 trade, circa 7,8% annuo), 6 monete nuove +135,6% (67 trade, circa 10% annuo), 9 insieme circa +70% (76 trade, circa 6% annuo). Aggiungere monete non ha migliorato il rendimento: il limite di 2 posizioni scarta molti segnali. Il 10% annuo citato prima valeva per le 6 monete da sole, non per la configurazione in uso.
-Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe scegliere a posteriori. Il riferimento per giudicare la prova virtuale e' questo risultato: circa 6% annuo, con anni negativi normali (2018, 2022, 2025).
