@@ -160,6 +160,7 @@ function buildLog(S, P, strategia) {
     tr.forEach(x => L.push(dISO(x.t) + ' | ' + x.s + ' | ' + (x.openT ? dISO(x.openT) : '-') + ' | ' + px(x.entry) + ' | ' + px(x.exit) + ' | ' + (x.pnl >= 0 ? '+' : '') + f(x.pnl) + ' | ' + f(x.pct * 100, 1) + '%'));
   }
   L.push('');
+  L.push(...require('./missed')(S, dISO));
   L.push('## Capitale giorno per giorno (ultimi ' + (S.days || []).length + ' giorni registrati)');
   L.push('giorno | capitale | eventi');
   (S.days || []).forEach(d => L.push(dISO(d.t) + ' | ' + f(d.eq) + ' | ' + ((d.ev || []).join('; ') || '-')));

@@ -126,6 +126,7 @@ function describe(e) {
 
 function stepDay(S, t, data, idx, ind) {
   const ev = [];
+  const miss = (s, why) => { S.missed = S.missed || []; const m = S.missed.filter(x => x.s === s).pop(); if (m && m.why === why && m.t2 === t - DAY) { m.t2 = t; m.n++; } else S.missed.push({ t, t2: t, n: 1, s, why }); if (S.missed.length > 500) S.missed = S.missed.slice(-500); };
   // 1) uscite
   for (const s of Object.keys(S.pos)) {
     const i = idx[s].get(t); if (i === undefined) continue;
@@ -146,14 +147,15 @@ function stepDay(S, t, data, idx, ind) {
     .filter(s => S.pend[s].type === 'BUY' && !S.pos[s] && idx[s].has(t))
     .sort((a, b) => S.pend[a].rank - S.pend[b].rank);
   for (const s of cands) {
-    if (S.halted || Object.keys(S.pos).length >= MAX_POS) break;
+    if (S.halted) { miss(s, 'stop globale'); continue; }
+    if (Object.keys(S.pos).length >= MAX_POS) { miss(s, 'limite 2 posizioni'); continue; }
     const k = data[s][idx[s].get(t)];
     const entry = k.o * (1 + SLIP);
     const stopDist = ATR_MULT * S.pend[s].atr;
     const stop = entry - stopDist;
-    if (stop <= 0) continue;
+    if (stop <= 0) { miss(s, 'stop non valido'); continue; }
     const { qty } = sizeQty(S, eq, dd, entry, stopDist);
-    if (qty * entry < 10) continue;
+    if (qty * entry < 10) { miss(s, 'quantita troppo piccola o rischio azzerato'); continue; }
     const cost = qty * entry * (1 + FEE);
     S.cash -= cost;
     S.pos[s] = { qty, entry, stop, cost, last: k.o, openT: t };
@@ -183,7 +185,7 @@ function stepDay(S, t, data, idx, ind) {
   S.maxDD = Math.max(S.maxDD, (S.gPeak - eq) / S.gPeak);
   S.lastT = t;
   S.days.push({ t, eq: Number(eq.toFixed(2)), ev: ev.map(describe) });
-  if (S.days.length > 400) S.days = S.days.slice(-400);
+  if (S.days.length > 800) S.days = S.days.slice(-800);
   return ev;
 }
 
