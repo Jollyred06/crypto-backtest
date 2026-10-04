@@ -1,0 +1,32 @@
+name: Prova virtuale
+
+on:
+  schedule:
+    - cron: '10 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Esegui prova virtuale
+        run: node paper_trader.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Salva risultati
+        run: |
+          git config user.name "paper-trader"
+          git config user.email "paper-trader@users.noreply.github.com"
+          git add paper_state.json PAPER_RIEPILOGO.md
+          git diff --cached --quiet || (git commit -m "Aggiornamento prova virtuale" && git push)
