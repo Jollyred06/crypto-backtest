@@ -3,7 +3,7 @@
 // Dati REALI Binance (BTC, ETH, SOL). Salva lo stato in paper_state.json e il riepilogo in PAPER_RIEPILOGO.md.
 const fs = require('fs');
 
-const SYMBOLS = { BTC: 'BTCUSDT', ETH: 'ETHUSDT', SOL: 'SOLUSDT' };
+const SYMBOLS = { BTC: 'BTCUSDT', ETH: 'ETHUSDT', SOL: 'SOLUSDT', BNB: 'BNBUSDT', XRP: 'XRPUSDT', ADA: 'ADAUSDT', DOGE: 'DOGEUSDT', LTC: 'LTCUSDT', LINK: 'LINKUSDT' };
 const HOSTS = ['https://data-api.binance.vision', 'https://api.binance.com'];
 const STATE_FILE = 'paper_state.json';
 const SUMMARY_FILE = 'PAPER_RIEPILOGO.md';

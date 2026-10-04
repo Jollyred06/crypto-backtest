@@ -84,7 +84,7 @@ async function getState() {
 async function getPrices() {
   if (cache.prices && Date.now() - cache.pricesAt < 60000) return cache.prices;
   const out = {};
-  const q = encodeURIComponent(JSON.stringify(['BTCUSDT', 'ETHUSDT', 'SOLUSDT']));
+  const q = encodeURIComponent(JSON.stringify(['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT', 'ADAUSDT', 'DOGEUSDT', 'LTCUSDT', 'LINKUSDT']));
   for (const host of HOSTS) {
     try {
       const r = await fetch(`${host}/api/v3/ticker/price?symbols=${q}`);
