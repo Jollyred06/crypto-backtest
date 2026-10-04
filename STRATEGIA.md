@@ -55,7 +55,6 @@ Il portafoglio da 9 monete insieme (con il limite di 2 posizioni) NON e' mai sta
 
 ## Da fare
 - Provare gli avvisi per mail (file test-notifica.yml, non ancora creato): le notifiche non sono mai state provate.
-- Provare il portafoglio da 9 monete come sistema unico, per avere il riferimento di cosa aspettarsi.
 - Rinnovare il token GitHub della pagina entro 2027-10-03.
 
 ## Diario
@@ -64,3 +63,24 @@ Il portafoglio da 9 monete insieme (con il limite di 2 posizioni) NON e' mai sta
 
 ## Come ripartire in una nuova chat
 Incolla questo file e PAPER_RIEPILOGO.md. Se bisogna modificare il codice, incolla anche paper_trader.js.
+## Test portafoglio da 9 monete insieme (riferimento della prova virtuale) - 2026-10-04
+Stessa strategia v3, 9 monete nello stesso portafoglio con limite di 2 posizioni, 2017-2026. Criteri (come prima, senza confronto con BTC): superati.
+Risultato: capitale circa 5109 su 3000 (+70%, circa 6% annuo composto), 76 trade, drawdown massimo 11,5%, stop globale mai scattato.
+Capitale e totale trade ricavati sommando le righe leggibili (la parte alta dello screenshot non si vedeva).
+Segnali di acquisto non eseguiti per il limite di 2 posizioni: 441 episodi (900 giorni-segnale).
+Per moneta (trade, P&L): BTC 15 +671 | ETH 13 +515 | SOL 7 +313 | BNB 12 -90 | XRP 5 -212 | ADA 4 +183 | DOGE 5 +388 | LTC 8 -82 | LINK 7 +423.
+Per anno (P&L, trade): 2018 -41 (2) | 2019 +366 (7) | 2020 +246 (8) | 2021 +705 (13) | 2022 -114 (5) | 2023 +96 (11) | 2024 +1100 (13) | 2025 -341 (13) | 2026 +91 (4).
+Ritmo: circa 10,5 trade chiusi all'anno (2020-2025): 15 trade in circa 1,4 anni, 20 trade in circa 1,9 anni.
+Confronto: 3 monete +98,7% (54 trade, circa 7,8% annuo), 6 monete nuove +135,6% (67 trade, circa 10% annuo), 9 insieme circa +70% (76 trade, circa 6% annuo). Aggiungere monete non ha migliorato il rendimento: il limite di 2 posizioni scarta molti segnali. Il 10% annuo citato prima valeva per le 6 monete da sole, non per la configurazione in uso.
+Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe scegliere a posteriori. Il riferimento per giudicare la prova virtuale e' questo risultato: circa 6% annuo, con anni negativi normali (2018, 2022, 2025).
+
+## Test portafoglio da 9 monete insieme (riferimento della prova virtuale) - 2026-10-04
+Stessa strategia v3, 9 monete nello stesso portafoglio con limite di 2 posizioni, 2017-2026. Criteri (come prima, senza confronto con BTC): superati.
+Risultato: capitale circa 5109 su 3000 (+70%, circa 6% annuo composto), 76 trade, drawdown massimo 11,5%, stop globale mai scattato.
+Capitale e totale trade ricavati sommando le righe leggibili (la parte alta dello screenshot non si vedeva).
+Segnali di acquisto non eseguiti per il limite di 2 posizioni: 441 episodi (900 giorni-segnale).
+Per moneta (trade, P&L): BTC 15 +671 | ETH 13 +515 | SOL 7 +313 | BNB 12 -90 | XRP 5 -212 | ADA 4 +183 | DOGE 5 +388 | LTC 8 -82 | LINK 7 +423.
+Per anno (P&L, trade): 2018 -41 (2) | 2019 +366 (7) | 2020 +246 (8) | 2021 +705 (13) | 2022 -114 (5) | 2023 +96 (11) | 2024 +1100 (13) | 2025 -341 (13) | 2026 +91 (4).
+Ritmo: circa 10,5 trade chiusi all'anno (2020-2025): 15 trade in circa 1,4 anni, 20 trade in circa 1,9 anni.
+Confronto: 3 monete +98,7% (54 trade, circa 7,8% annuo), 6 monete nuove +135,6% (67 trade, circa 10% annuo), 9 insieme circa +70% (76 trade, circa 6% annuo). Aggiungere monete non ha migliorato il rendimento: il limite di 2 posizioni scarta molti segnali. Il 10% annuo citato prima valeva per le 6 monete da sole, non per la configurazione in uso.
+Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe scegliere a posteriori. Il riferimento per giudicare la prova virtuale e' questo risultato: circa 6% annuo, con anni negativi normali (2018, 2022, 2025).
