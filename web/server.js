@@ -13,6 +13,7 @@ const USER = process.env.DASH_USER;
 const PASS = process.env.DASH_PASS;
 const HOSTS = ['https://data-api.binance.vision', 'https://api.binance.com'];
 const getCoinsHtml = require('./coins')(HOSTS);
+const getIndiciHtml = require('./indici');
 
 // Senza queste tre variabili il server non parte: cosi' la pagina non resta mai pubblica senza password.
 if (!TOKEN || !USER || !PASS) {
@@ -190,7 +191,7 @@ const server = http.createServer(async (req, res) => {
   if (url === '/api/data') {
     try {
       const [state, prices] = await Promise.all([getState(), getPrices()]);
-      return send(res, 200, 'application/json', JSON.stringify({ state, prices, coinsHtml: await getCoinsHtml(state, prices).catch(() => ''), updatedAt: new Date().toISOString() }));
+      return send(res, 200, 'application/json', JSON.stringify({ state, prices, coinsHtml: (await getCoinsHtml(state, prices).catch(() => '')) + (await getIndiciHtml(getRepoText).catch(() => '')), updatedAt: new Date().toISOString() }));
     } catch (e) {
       return send(res, 502, 'application/json', JSON.stringify({ error: e.message }));
     }
