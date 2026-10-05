@@ -1,0 +1,30 @@
+name: paper-indici
+on:
+  schedule:
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node paper_indici.js
+      - name: Salva stato
+        run: |
+          git config user.name "paper-bot"
+          git config user.email "paper-bot@users.noreply.github.com"
+          git add paper_indici_state.json PAPER_INDICI.md
+          git diff --cached --quiet || git commit -m "paper indici $(date -u +%F)"
+          git pull --rebase
+          git push
+      - name: Apri issue se ci sono eventi
+        if: hashFiles('issue_body.md') != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh issue create --title "Prova virtuale indici $(date -u +%F)" --body-file issue_body.md
