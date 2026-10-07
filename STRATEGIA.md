@@ -84,3 +84,8 @@ Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe sceglie
 - In qualsiasi momento: drawdown oltre 20% = criterio violato, si ferma tutto.
 - Periodi senza nuovo massimo fino a 40 trade (circa 4 anni) sono nella norma. Nessun cambio di parametri per questo motivo.
 - A 15 trade un risultato positivo o negativo non decide niente: anche se il vantaggio del backtest è reale, circa il 15% delle simulazioni finisce sotto 3000. Per passare ai soldi veri servono molti più trade chiusi.
+
+## Prova virtuale indici - verifica del codice (2026-10-07)
+- Replay giorno per giorno di paper_indici.js su 2018-2026 (backtest_mercati/replay_indici.js): 67 trade, tutti identici alla simulazione di riferimento. Il codice fa ciò che dichiara.
+- Soglie per gli indici (dal backtest completo con rischio 2%: circa 8,5% annuo, drawdown fino a 23%): drawdown oltre 25% = si ferma tutto. Anni senza nuovo massimo sono normali. Nessun cambio di parametri durante la prova.
+- Mercati: Nasdaq 100, Nikkei 225, Oro (scelti dopo aver visto il backtest, quindi il risultato storico è un po' ottimistico; il giudizio vero viene dai trade reali).
