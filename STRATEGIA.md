@@ -73,3 +73,8 @@ Ritmo: circa 10,5 trade chiusi all'anno (2020-2025): 15 trade in circa 1,4 anni,
 Confronto: 3 monete +98,7% (54 trade, circa 7,8% annuo), 6 monete nuove +135,6% (67 trade, circa 10% annuo), 9 insieme circa +70% (76 trade, circa 6% annuo). Aggiungere monete non ha migliorato il rendimento: il limite di 2 posizioni scarta molti segnali. Il 10% annuo citato prima valeva per le 6 monete da sole, non per la configurazione in uso.
 Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe scegliere a posteriori. Il riferimento per giudicare la prova virtuale e' questo risultato: circa 6% annuo, con anni negativi normali (2018, 2022, 2025).
 
+
+## Aggiornamento 2026-10-07
+- Notifiche provate: la mail dell'issue GitHub è arrivata per il segnale ADA (voce "Da fare" superata).
+- Aggiunta una prova virtuale separata sugli indici (paper_indici.js: Nasdaq 100, Nikkei 225, Oro) con sezione Indici nella pagina.
+- Forex, petrolio, rame e Treasury scartati dai backtest. Strategia crypto invariata.
