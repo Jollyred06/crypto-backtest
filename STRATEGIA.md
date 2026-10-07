@@ -78,3 +78,9 @@ Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe sceglie
 - Notifiche provate: la mail dell'issue GitHub è arrivata per il segnale ADA (voce "Da fare" superata).
 - Aggiunta una prova virtuale separata sugli indici (paper_indici.js: Nasdaq 100, Nikkei 225, Oro) con sezione Indici nella pagina.
 - Forex, petrolio, rame e Treasury scartati dai backtest. Strategia crypto invariata.
+
+## Soglie di allarme (fissate il 2026-10-07, da simulazione di 20000 rimescolamenti dei 76 trade storici)
+- A 15 trade chiusi: capitale sotto 2880 o drawdown massimo oltre 6% = controllare il bot (esecuzioni, dati) prima di continuare. Non è una bocciatura della strategia.
+- In qualsiasi momento: drawdown oltre 20% = criterio violato, si ferma tutto.
+- Periodi senza nuovo massimo fino a 40 trade (circa 4 anni) sono nella norma. Nessun cambio di parametri per questo motivo.
+- Un risultato positivo a 15 trade non basta per passare ai soldi veri (il 15% delle simulazioni è sotto 3000 e l'85% sopra anche senza nessun vantaggio reale della strategia).
