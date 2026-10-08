@@ -89,3 +89,10 @@ Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe sceglie
 - Replay giorno per giorno di paper_indici.js su 2018-2026 (backtest_mercati/replay_indici.js): 67 trade, tutti identici alla simulazione di riferimento. Il codice fa ciò che dichiara.
 - Soglie per gli indici (dal backtest completo con rischio 2%: circa 8,5% annuo, drawdown fino a 23%): drawdown oltre 25% = si ferma tutto. Anni senza nuovo massimo sono normali. Nessun cambio di parametri durante la prova.
 - Mercati: Nasdaq 100, Nikkei 225, Oro (scelti dopo aver visto il backtest, quindi il risultato storico è un po' ottimistico; il giudizio vero viene dai trade reali).
+
+## Test ETF senza leva (2026-10-08)
+- Portafoglio A (Nasdaq, Nikkei, Oro) con tetto 0,33 per mercato (esposizione max 1x), 25,9 anni.
+- Rischio 1%: 3,9% annuo, drawdown 9,0%, Sharpe 0,78.
+- Rischio 2%: 4,8% annuo, drawdown 12,4%, Sharpe 0,76 (prima metà 3,7%, seconda 5,9%). Con leva e rischio 2%: circa 8,5%, drawdown circa 23%.
+- Il tetto dimezza rendimento e drawdown, la qualità (Sharpe) resta uguale. Netto di TER circa 4,5-4,7%, esclusi tasse e cambio.
+- Nessuna modifica a paper_indici.js: la prova virtuale resta con leva fino a 10x.
