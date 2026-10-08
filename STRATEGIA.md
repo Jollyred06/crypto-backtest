@@ -1,5 +1,5 @@
 # Strategia e diario - Prova virtuale crypto
-Ultimo aggiornamento: 2026-10-04
+Ultimo aggiornamento: 2026-10-08
 
 ## Scopo
 Strumento di segnali (compra / vendi / stop) su 9 monete: BTC, ETH, SOL, BNB, XRP, ADA, DOGE, LTC, LINK. Nessun ordine automatico.
