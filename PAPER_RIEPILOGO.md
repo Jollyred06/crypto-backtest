@@ -2,12 +2,12 @@
 
 Nessun ordine reale: simulazione con prezzi veri. Non e' un consiglio di investimento.
 
-Ultima candela chiusa: **2026-10-12** | Partenza: 2026-10-03 con 3000
+Ultima candela chiusa: **2026-10-13** | Partenza: 2026-10-03 con 3000
 
 | Voce | Valore |
 |---|---|
-| Capitale | **2982.72** (-0.6%) |
-| BTC tenuto fermo dalla partenza | -3.4% |
+| Capitale | **2984.55** (-0.5%) |
+| BTC tenuto fermo dalla partenza | -1.9% |
 | Drawdown massimo | 0.8% |
 | Trade chiusi | 0 |
 | Win rate | - |
@@ -15,7 +15,7 @@ Ultima candela chiusa: **2026-10-12** | Partenza: 2026-10-03 con 3000
 | Stop globale -15% | non attivo (scattato 0 volte) |
 
 ## Posizioni aperte
-- **ADA**: qta 630.6, entrata 0.2598, stop 0.2123, ultimo prezzo 0.2331 (-10.3%)
+- **ADA**: qta 630.6, entrata 0.2598, stop 0.2123, ultimo prezzo 0.2360 (-9.2%)
 
 ## Segnali per oggi
 Nessun segnale.
@@ -23,6 +23,7 @@ Nessun segnale.
 ## Ultimi 15 giorni
 | Giorno | Capitale | Eventi |
 |---|---|---|
+| 2026-10-13 | 2984.55 | - |
 | 2026-10-12 | 2982.72 | - |
 | 2026-10-11 | 2994.83 | - |
 | 2026-10-10 | 2992.87 | - |
