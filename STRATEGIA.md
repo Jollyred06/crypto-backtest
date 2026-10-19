@@ -1,5 +1,5 @@
 # Strategia e diario - Prova virtuale crypto
-Ultimo aggiornamento: 2026-10-08
+Ultimo aggiornamento: 2026-10-19
 
 ## Scopo
 Strumento di segnali (compra / vendi / stop) su 9 monete: BTC, ETH, SOL, BNB, XRP, ADA, DOGE, LTC, LINK. Nessun ordine automatico.
@@ -53,7 +53,6 @@ Limiti: circa l'82% del guadagno viene da 2021 e 2024; BNB da solo pesa circa la
 - Soldi veri: non prima. Eventuale primo passo: 300-500 al massimo, chiave API solo per il trading e mai per i prelievi, verifica fiscale con il commercialista.
 
 ## Da fare
-- Provare gli avvisi per mail (file test-notifica.yml, non ancora creato): le notifiche non sono mai state provate.
 - Rinnovare il token GitHub della pagina entro 2027-10-03.
 
 ## Diario
