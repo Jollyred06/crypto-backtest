@@ -95,3 +95,9 @@ Decisione: nessun cambio. Scegliere ora il sottoinsieme migliore sarebbe sceglie
 - Rischio 2%: 4,8% annuo, drawdown 12,4%, Sharpe 0,76 (prima metà 3,7%, seconda 5,9%). Con leva e rischio 2%: circa 8,5%, drawdown circa 23%.
 - Il tetto dimezza rendimento e drawdown, la qualità (Sharpe) resta uguale. Netto di TER circa 4,5-4,7%, esclusi tasse e cambio.
 - Nessuna modifica a paper_indici.js: la prova virtuale resta con leva fino a 10x.
+
+## Replay del bot crypto (2026-10-19)
+- backtest_mercati/replay_crypto.js fa girare stepDay di paper_trader.js giorno per giorno (stato salvato e riletto ogni giorno) e lo confronta con backtest_nove.js.
+- Risultato: REPLAY OK. 76 trade su 76 identici, capitale finale 5058 in entrambi, drawdown 11.5%, stop globale 0/0, giorni-segnale non eseguiti 902/902.
+- Correzione: il capitale finale a 9 monete è 5058, non 5109 (il vecchio numero veniva da una somma sbagliata).
+- Non coperti dal replay: download prezzi, scrittura file, apertura issue (verificati dall'uso quotidiano).
