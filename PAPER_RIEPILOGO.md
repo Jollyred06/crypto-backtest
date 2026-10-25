@@ -2,12 +2,12 @@
 
 Nessun ordine reale: simulazione con prezzi veri. Non e' un consiglio di investimento.
 
-Ultima candela chiusa: **2026-10-23** | Partenza: 2026-10-03 con 3000
+Ultima candela chiusa: **2026-10-24** | Partenza: 2026-10-03 con 3000
 
 | Voce | Valore |
 |---|---|
 | Capitale | **2980.50** (-0.6%) |
-| BTC tenuto fermo dalla partenza | -4.2% |
+| BTC tenuto fermo dalla partenza | -4.6% |
 | Drawdown massimo | 0.9% |
 | Trade chiusi | 1 |
 | Win rate | 0% |
@@ -23,6 +23,7 @@ Nessun segnale.
 ## Ultimi 15 giorni
 | Giorno | Capitale | Eventi |
 |---|---|---|
+| 2026-10-24 | 2980.50 | - |
 | 2026-10-23 | 2980.50 | - |
 | 2026-10-22 | 2980.50 | - |
 | 2026-10-21 | 2980.50 | - |
@@ -37,7 +38,6 @@ Nessun segnale.
 | 2026-10-12 | 2982.72 | - |
 | 2026-10-11 | 2994.83 | - |
 | 2026-10-10 | 2992.87 | - |
-| 2026-10-09 | 2989.02 | - |
 
 ## Ultimi 20 trade chiusi
 | Chiuso | Moneta | Entrata | Uscita | P&L |
