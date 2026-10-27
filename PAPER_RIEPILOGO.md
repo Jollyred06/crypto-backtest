@@ -2,7 +2,7 @@
 
 Nessun ordine reale: simulazione con prezzi veri. Non e' un consiglio di investimento.
 
-Ultima candela chiusa: **2026-10-25** | Partenza: 2026-10-03 con 3000
+Ultima candela chiusa: **2026-10-26** | Partenza: 2026-10-03 con 3000
 
 | Voce | Valore |
 |---|---|
@@ -23,6 +23,7 @@ Nessun segnale.
 ## Ultimi 15 giorni
 | Giorno | Capitale | Eventi |
 |---|---|---|
+| 2026-10-26 | 2980.50 | - |
 | 2026-10-25 | 2980.50 | - |
 | 2026-10-24 | 2980.50 | - |
 | 2026-10-23 | 2980.50 | - |
@@ -37,7 +38,6 @@ Nessun segnale.
 | 2026-10-14 | 2980.89 | - |
 | 2026-10-13 | 2984.55 | - |
 | 2026-10-12 | 2982.72 | - |
-| 2026-10-11 | 2994.83 | - |
 
 ## Ultimi 20 trade chiusi
 | Chiuso | Moneta | Entrata | Uscita | P&L |
