@@ -2,7 +2,7 @@
 
 Nessun ordine reale: simulazione con prezzi veri. Non e' un consiglio di investimento.
 
-Ultima candela chiusa: **2026-10-27** | Rischio per trade 2% | Partenza con 3000
+Ultima candela chiusa: **2026-10-28** | Rischio per trade 2% | Partenza con 3000
 
 Capitale virtuale: **2872.63** | Massimo: 3027.52 | Drawdown attuale: 5.12% | Esposizione: 0.00x
 
